@@ -9,7 +9,7 @@ public class PlayButton : MonoBehaviour
     GameObject button;
     public bool playing = false;
     
-    public void OnButtonPress(){
+    public void OnButtonPress() {
       Debug.Log("play button press");
       button.SetActive(false);
       rb.useGravity = true;
