@@ -11,22 +11,23 @@ public class movement : MonoBehaviour
     */
 
     public Rigidbody rb;
-    public float moveSpeed = 3.0f;
+    public float moveSpeed { get; private set; }
     public PlayButton playButton; // C# why???
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         playButton = gameObject.GetComponent<PlayButton>();
+        moveSpeed = 0.1f;
         //rb.velocity = new Vector3(0, 10, 0);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown("a")) {
+        if (Input.GetKey("a")) {
             if (playButton.playing) {
                 // move left
                 gameObject.transform.position = new Vector3(
-                    gameObject.transform.position.x - 0.3f, 
+                    gameObject.transform.position.x - moveSpeed, 
                     gameObject.transform.position.y, 
                     gameObject.transform.position.z
                 );
@@ -35,10 +36,10 @@ public class movement : MonoBehaviour
                 // do nothing
             }
         }
-        if (Input.GetKeyDown("d")) {
+        if (Input.GetKey("d")) {
             if (playButton.playing) {
                 gameObject.transform.position = new Vector3(
-                    gameObject.transform.position.x + 0.3f, 
+                    gameObject.transform.position.x + moveSpeed, 
                     gameObject.transform.position.y, 
                     gameObject.transform.position.z
                 );
